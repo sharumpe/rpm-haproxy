@@ -25,6 +25,7 @@ build: install_prereq clean download-upstream
 	rpmbuild -ba SPECS/haproxy.spec \
 	--define "version ${VERSION}" \
 	--define "release ${RELEASE}" \
+        --define "debug_package %{nil}" \
 	--define "_topdir %(pwd)/rpmbuild" \
 	--define "_builddir %{_topdir}/BUILD" \
 	--define "_buildroot %{_topdir}/BUILDROOT" \
