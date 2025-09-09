@@ -1,4 +1,5 @@
 HOME=$(shell pwd)
+USE_SPEC?=haproxy.spec
 MAINVERSION?=2.4
 NO_SUDO?=0
 USE_PODMAN?=0
@@ -84,7 +85,7 @@ run-docker: build-docker
 build: $(build_stages)
 	cp -r ./SPECS/* ./rpmbuild/SPECS/ || true
 	cp -r ./SOURCES/* ./rpmbuild/SOURCES/ || true
-	rpmbuild -ba SPECS/haproxy.spec \
+	rpmbuild -ba SPECS/${USE_SPEC} \
 	--define "mainversion ${MAINVERSION}" \
 	--define "version ${VERSION}" \
 	--define "release ${RELEASE}" \
